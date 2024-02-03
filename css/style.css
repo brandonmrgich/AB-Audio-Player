@@ -205,7 +205,7 @@ button:hover {
   width: 0%;
 }
 
-@media screen (min-width: 768px) {
+@media screen and (min-width: 768px) {
   body {
     grid-template-rows: 1fr 1fr;
   }
