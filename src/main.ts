@@ -13,7 +13,7 @@ const audioData = [
 ];
 
 // Function to create audio players
-function createAudioPlayer(data) {
+function createAudioPlayer(data: any) {
     const playerWrapper = document.createElement("div");
     playerWrapper.classList.add("player__wrapper");
     playerWrapper.dataset.audioA = data.audioA;
@@ -38,7 +38,7 @@ function createAudioPlayer(data) {
         </div>
     `;
 
-    document.getElementById("playersContainer").appendChild(playerWrapper);
+    document.getElementById("playersContainer")?.appendChild(playerWrapper);
 }
 
 // Create audio players for each data entry

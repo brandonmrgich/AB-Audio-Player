@@ -1,5 +1,5 @@
 // Function to create and initialize audio elements
-function createAudioElement(src) {
+function createAudioElement(src: any) {
   const audio = document.createElement('audio');
   audio.src = src;
   audio.preload = 'auto';
@@ -9,7 +9,7 @@ function createAudioElement(src) {
 }
 
 // Function to initialize a player
-function initializePlayer(player) {
+function initializePlayer(player: any) {
   const soundA = createAudioElement(player.getAttribute('data-audio-a') || '');
   const soundB = createAudioElement(player.getAttribute('data-audio-b') || '');
 
@@ -51,7 +51,7 @@ function initializePlayer(player) {
   };
 
   // Click event on progress bar to seek
-  player.querySelector('.progress').addEventListener('click', (event) => {
+  player.querySelector('.progress').addEventListener('click', (event: any) => {
     const rect = (event.currentTarget).getBoundingClientRect();
     const percentage = (event.clientX - rect.left) / rect.width;
     soundA.currentTime = percentage * (soundA.duration || 0);
@@ -168,14 +168,14 @@ function initializePlayer(player) {
   }
 
   // Update progress bar during playback
-  function updateProgress(audio, progressBar) {
+  function updateProgress(audio: any, progressBar: any) {
     progressBar.style.width = ((audio.currentTime / (audio.duration || 1)) * 100 || 0) + '%';
     requestAnimationFrame(() => updateProgress(audio, progressBar));
   }
 }
 
 // Initialize all players
-function initializePlayers(players) {
+function initializePlayers(players: any) {
   players.forEach(initializePlayer);
 }
 

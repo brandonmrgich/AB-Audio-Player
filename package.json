@@ -2,9 +2,10 @@
   "name": "ab-audio-player",
   "version": "1.0.0",
   "description": "<div id=\"top\"></div>",
-  "main": "main.js",
+  "main": "main.ts",  
   "scripts": {
-    "start": "live-server",
+    "build": "tsc",
+    "start": "npm run build && live-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
