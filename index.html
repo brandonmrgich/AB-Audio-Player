@@ -1,15 +1,16 @@
+<!-- Update your existing HTML file to reference TypeScript files -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Before&After Audio Player</title>
-    <meta name="description" content="Toggle between two audio files to compare" />
-    <meta name="author" content="Matt Bartley" />
-    <meta property="og:title" content="Before&After Audio Player" />
+    <title>BAM Audio Engineering</title>
+    <meta name="description" content="Toggle between unmastered, and mastered audio files" />
+    <meta name="author" content="Brandon Mrgich" />
+    <meta property="og:title" content="Audio Comparison" />
     <meta property="og:type" content="website" />
-    <meta property="og:description" content="Toggle between two audio files to compare" />
+    <meta property="og:description" content="Toggle between unmastered, and mastered audio files" />
     <meta property="og:image" content="image.png" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -21,23 +22,23 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./css/style.css" />
 </head>
-
-<body>
+<header>
     <div id="intro">
-        <h1>A/B Player</h1>
         <div id="tagline">
-            Forked from:
+            Player card logic forked from:
             <a href="https://github.com/mattbartley/AB-Audio-Player" target="_blank"><i
-                    class="fa-brands fa-github"></i> Open Source on GitHub</a>
+                    class="fa-brands fa-github"></i> mattbartley/AB-Audio-Player
+            </a>
         </div>
-        <p>Toggle between two audio files to compare them side-by-side.</p>
     </div>
+</header>
+<body>
+    <p class="song__name">Toggle between unmastered, and mastered audio files.</p>
     <div id="playersContainer"></div>
-  </body>
-  
-  <script src="./js/main.js"></script>
-  <script src="./js/ab-player.js"></script>
+
+    <!-- Update the script tags to reference TypeScript files -->
+    <script src="./js/main.js"></script>
+    <script src="./js/ab-player.js"></script>
+</body>
+
 </html>
-
-
-

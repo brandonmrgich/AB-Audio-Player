@@ -1,7 +1,14 @@
+// interface AudioData {
+//     audioA: string;
+//     audioB: string;
+//     songName: string;
+//     artist: string;
+//   }
+  
 // Sample data for audio sources
 const audioData = [
-    { audioA: "./assets/sound1-a.mp3", audioB: "./assets/sound1-b.mp3" },
-    { audioA: "./assets/sound2-a.mp3", audioB: "./assets/sound2-b.mp3" },
+    { audioA: "./assets/sound1-a.mp3", audioB: "./assets/sound1-b.mp3", songName: "Unheard" , artist: "Brandon Mrgich with Blueshades"},
+    { audioA: "./assets/sound2-a.mp3", audioB: "./assets/sound2-b.mp3", songName: "Sample Audio", artist: "Sample" },
     // Add more data as needed
 ];
 
@@ -12,8 +19,12 @@ function createAudioPlayer(data) {
     playerWrapper.dataset.audioA = data.audioA;
     playerWrapper.dataset.audioB = data.audioB;
 
-    // Your existing player HTML structure
+    // Player HTML structure with song name
     playerWrapper.innerHTML = `
+        <div class "song__metadata__container">  
+            <div class="song__name">${data.songName}</div>
+            <div class="song__artist">By: ${data.artist}</div>
+        </div>
         <div class="progress__container progress">
             <div class="progress__bar progress__fill"></div>
         </div>
@@ -32,6 +43,3 @@ function createAudioPlayer(data) {
 
 // Create audio players for each data entry
 audioData.forEach(createAudioPlayer);
-
-// Include your existing ab-player.js script here or load it dynamically if needed
-//<script src="./js/ab-player.js"></script>

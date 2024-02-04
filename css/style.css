@@ -108,6 +108,24 @@ body {
   margin: 20px 2vw;
 }
 
+.song__metadata__container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: left;
+}
+
+.song__name {
+  font-size: 1.6em;
+  font-weight: bold;
+}
+
+.song__artist {
+  font-size: 1em;
+}
+
+
 .ab__controls {
   display: grid;
   align-content: center;
