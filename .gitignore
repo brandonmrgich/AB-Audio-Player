@@ -12,3 +12,6 @@ node_modules
 
 # Ignor vscode settings
 .vscode
+
+# Ignore build folder
+.build
