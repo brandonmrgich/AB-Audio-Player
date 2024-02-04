@@ -1,19 +1,19 @@
-// interface AudioData {
-//     audioA: string;
-//     audioB: string;
-//     songName: string;
-//     artist: string;
-//   }
+interface AudioData {
+    audioA: string;
+    audioB: string;
+    songName: string;
+    artist: string;
+  }
   
 // Sample data for audio sources
-const audioData = [
+const audioData: AudioData[] = [
     { audioA: "./assets/sound1-a.mp3", audioB: "./assets/sound1-b.mp3", songName: "Unheard" , artist: "Brandon Mrgich with Blueshades"},
     { audioA: "./assets/sound2-a.mp3", audioB: "./assets/sound2-b.mp3", songName: "Sample Audio", artist: "Sample" },
     // Add more data as needed
 ];
 
 // Function to create audio players
-function createAudioPlayer(data: any) {
+function createAudioPlayer(data: AudioData) {
     const playerWrapper = document.createElement("div");
     playerWrapper.classList.add("player__wrapper");
     playerWrapper.dataset.audioA = data.audioA;

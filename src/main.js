@@ -1,10 +1,4 @@
 "use strict";
-// interface AudioData {
-//     audioA: string;
-//     audioB: string;
-//     songName: string;
-//     artist: string;
-//   }
 // Sample data for audio sources
 var audioData = [
     { audioA: "./assets/sound1-a.mp3", audioB: "./assets/sound1-b.mp3", songName: "Unheard", artist: "Brandon Mrgich with Blueshades" },

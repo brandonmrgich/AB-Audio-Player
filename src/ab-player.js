@@ -1,170 +1,91 @@
 "use strict";
-// Function to create and initialize audio elements
-function createAudioElement(src) {
-    var audio = document.createElement('audio');
-    audio.src = src;
-    audio.preload = 'auto';
-    audio.setAttribute('hidden', 'true');
-    document.body.append(audio);
-    return audio;
-}
-// Function to initialize a player
-function initializePlayer(player) {
-    var soundA = createAudioElement(player.getAttribute('data-audio-a') || '');
-    var soundB = createAudioElement(player.getAttribute('data-audio-b') || '');
-    var aButton = player.querySelector('.a__button');
-    var bButton = player.querySelector('.b__button');
-    var playButton = player.querySelector('.play__button');
-    var stopButton = player.querySelector('.stop__button');
-    var progressFill = player.querySelector('.progress__fill');
-    var playIcon = '<i class="fa-solid fa-play"></i>';
-    var pauseIcon = '<i class="fa-solid fa-pause"></i>';
-    var soundAReady = false;
-    var soundBReady = false;
-    // Check if audio elements are ready
-    function audioIsReady() {
-        if (soundAReady && soundBReady) {
+// // Function to create and initialize audio elements
+// function createAudioElement(src: string) {
+//   const audio = document.createElement('audio');
+//   audio.src = src;
+//   audio.preload = 'auto';
+//   audio.setAttribute('hidden', 'true');
+//   document.body.append(audio);
+//   return audio;
+// }
+var AudioPlayer = /** @class */ (function () {
+    function AudioPlayer(player) {
+        this.player = player;
+        this.playIcon = '';
+        this.pauseIcon = '';
+        this.soundA = this.createAudioElement(player.audioA || '');
+        this.soundB = this.createAudioElement(player.audioB || '');
+        this.aButton = player.querySelector('.a__button');
+        this.bButton = player.querySelector('.b__button');
+        this.playButton = player.querySelector('.play__button');
+        this.stopButton = player.querySelector('.stop__button');
+        this.progressFill = player.querySelector('.progress__fill');
+        this.playIcon = '<i class="fa-solid fa-play"></i>';
+        this.pauseIcon = '<i class="fa-solid fa-pause"></i>';
+        this.soundAReady = false;
+        this.soundBReady = false;
+        // Add other initialization logic if needed
+    }
+    AudioPlayer.prototype.createAudioElement = function (src) {
+        var audio = document.createElement('audio');
+        audio.src = src;
+        audio.preload = 'auto';
+        audio.setAttribute('hidden', 'true');
+        document.body.append(audio);
+        return audio;
+    };
+    AudioPlayer.prototype.audioIsReady = function () {
+        if (this.soundAReady && this.soundBReady) {
             console.log('...audio loaded!');
-            aButton.disabled = false;
-            playButton.disabled = false;
+            this.aButton.disabled = false;
+            this.playButton.disabled = false;
         }
         else {
             console.log('Audio loading...');
         }
-    }
-    soundA.oncanplaythrough = function () {
-        if (!soundAReady) {
-            soundAReady = true;
-            audioIsReady();
-        }
     };
-    soundB.oncanplaythrough = function () {
-        if (!soundBReady) {
-            soundBReady = true;
-            audioIsReady();
-        }
-    };
-    // Click event on progress bar to seek
-    player.querySelector('.progress').addEventListener('click', function (event) {
-        var rect = (event.currentTarget).getBoundingClientRect();
-        var percentage = (event.clientX - rect.left) / rect.width;
-        soundA.currentTime = percentage * (soundA.duration || 0);
-        soundB.currentTime = percentage * (soundB.duration || 0);
-    });
-    // Play/Pause function
-    function playPause() {
-        if (soundA.paused && soundB.paused) {
-            var soundATime = soundA.currentTime;
-            var soundBTime = soundB.currentTime;
+    AudioPlayer.prototype.playPause = function () {
+        if (this.soundA.paused && this.soundB.paused) {
+            var soundATime = this.soundA.currentTime;
+            var soundBTime = this.soundB.currentTime;
             if (soundATime >= soundBTime) {
-                soundA.play();
-                bButton.disabled = false;
-                aButton.disabled = true;
-                playButton.innerHTML = pauseIcon;
+                this.soundA.play();
+                this.bButton.disabled = false;
+                this.aButton.disabled = true;
+                this.playButton.innerHTML = this.pauseIcon;
             }
             else {
-                soundB.play();
-                bButton.disabled = true;
-                aButton.disabled = false;
-                playButton.innerHTML = pauseIcon;
+                this.soundB.play();
+                this.bButton.disabled = true;
+                this.aButton.disabled = false;
+                this.playButton.innerHTML = this.pauseIcon;
             }
-            stopButton.disabled = false;
+            this.stopButton.disabled = false;
         }
         else {
-            playButton.innerHTML = playIcon;
-            soundA.pause();
-            soundB.pause();
+            this.playButton.innerHTML = this.playIcon;
+            this.soundA.pause();
+            this.soundB.pause();
         }
-    }
-    // Button event listeners
-    aButton.addEventListener('click', function () {
-        pauseAll();
-        playButton.innerHTML = pauseIcon;
-        aButton.disabled = true;
-        bButton.disabled = false;
-        stopButton.disabled = false;
-        if (soundB.currentTime > 0) {
-            soundA.currentTime = soundB.currentTime;
-            soundA.play();
-            soundB.pause();
-        }
-        else {
-            soundA.play();
-            soundB.pause();
-        }
-    });
-    bButton.addEventListener('click', function () {
-        pauseAll();
-        playButton.innerHTML = pauseIcon;
-        bButton.disabled = true;
-        aButton.disabled = false;
-        stopButton.disabled = false;
-        if (soundA.currentTime > 0) {
-            soundB.currentTime = soundA.currentTime;
-            soundB.play();
-            soundA.pause();
-        }
-        else {
-            soundB.play();
-        }
-    });
-    playButton.addEventListener('click', function () {
-        var allAudio = document.querySelectorAll('audio');
-        var allButtons = document.querySelectorAll('.play__button');
-        allAudio.forEach(function (audio) {
-            if (audio !== soundA && audio !== soundB) {
-                audio.pause();
-            }
-        });
-        allButtons.forEach(function (button) {
-            if (button !== playButton) {
-                button.innerHTML = playIcon;
-            }
-        });
-        playPause();
-    });
-    stopButton.addEventListener('click', stopSounds);
-    // Event listener for progress update during playback
-    soundA.addEventListener('playing', function () {
-        console.log('playing a');
-        updateProgress(soundA, progressFill);
-    });
-    soundB.addEventListener('playing', function () {
-        console.log('playing b');
-        updateProgress(soundB, progressFill);
-    });
-    // Stop all sounds and reset UI
-    function stopSounds() {
-        playButton.innerHTML = playIcon;
-        aButton.disabled = false;
-        bButton.disabled = true;
-        playButton.disabled = false;
-        stopButton.disabled = true;
-        soundA.pause();
-        soundA.currentTime = 0;
-        soundB.pause();
-        soundB.currentTime = 0;
-    }
-    // Pause all sounds
-    function pauseAll() {
-        var allAudio = document.querySelectorAll('audio');
-        allAudio.forEach(function (audio) {
-            audio.pause();
-        });
-        document.querySelectorAll('.play__button').forEach(function (button) {
-            button.innerHTML = playIcon;
-        });
-    }
-    // Update progress bar during playback
-    function updateProgress(audio, progressBar) {
-        progressBar.style.width = ((audio.currentTime / (audio.duration || 1)) * 100 || 0) + '%';
-        requestAnimationFrame(function () { return updateProgress(audio, progressBar); });
-    }
-}
-// Initialize all players
-function initializePlayers(players) {
-    players.forEach(initializePlayer);
-}
+    };
+    AudioPlayer.prototype.stopSounds = function () {
+        this.playButton.innerHTML = this.playIcon;
+        this.aButton.disabled = false;
+        this.bButton.disabled = true;
+        this.playButton.disabled = false;
+        this.stopButton.disabled = true;
+        this.soundA.pause();
+        this.soundA.currentTime = 0;
+        this.soundB.pause();
+        this.soundB.currentTime = 0;
+    };
+    // Add other methods as needed
+    AudioPlayer.prototype.initialize = function () {
+        // Add your initialization logic
+    };
+    return AudioPlayer;
+}());
+// Usage
 var players = document.querySelectorAll('.player__wrapper');
-initializePlayers(players);
+players.forEach(function (player) { return new AudioPlayer(player).initialize(); });
 //# sourceMappingURL=ab-player.js.map
