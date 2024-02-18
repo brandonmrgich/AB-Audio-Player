@@ -22,7 +22,16 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./css/style.css" />
 </head>
+
 <header>
+    <div class="navbar">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+        </ul>
+    </div>
+
     <div id="intro">
         <div id="tagline">
             Player card logic forked from:
@@ -32,9 +41,32 @@
         </div>
     </div>
 </header>
+
 <body>
-    <p class="song__name">Toggle between unmastered, and mastered audio files.</p>
-    <div id="playersContainer"></div>
+    <div id="home" class="section">
+        <p class="song__name">Toggle between unmastered, and mastered audio files.</p>
+
+        <div id="playersContainer"></div>
+    </div>
+
+    <div id="about" class="section">
+        <p> About page</p>
+            <a>Welcome to my audio engineering portfolio! My name is Brandon Mrgich, and I'm passionate about bringing music to life through the art of mixing and mastering. With years of experience doing this for myself and friends, I've had the privilege of working with a diverse range of artists and genres, helping them achieve the sound they envision for their music.
+            
+                One of the highlights of my portfolio is the recent mastering of my collaborative album, "Ghosts of the Auditorium: Live Performances for an Empty Theatre", which you can listen to "before & after" version here on the site.
+                
+                In addition to my own projects, I've also had the opportunity to work with numerous other musicianis, providing mixing and mastering services for a variety of tracks and albums. Whether it's a single, an EP, or a full-length album, I approach each project with the goals of making it easy, and enjoyable to listen to.
+                
+                On this website, you'll find samples of my work, including snippets from "GOTA", and other projects I've worked on. Feel free to listen to my work and see for yourself! 
+                
+                Thank you for visiting, and I look forward to the possibility of collaborating with you on your next music project!
+        </a>
+    </div>
+
+    <div id="services" class="section">
+        <p> Services page</p>
+        <div id="playersContainer"></div>
+    </div>
 
     <!-- Update the script tags to reference TypeScript files -->
     <script src="./build/main.js"></script>

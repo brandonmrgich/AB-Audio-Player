@@ -8,7 +8,15 @@
 // Sample data for audio sources
 const audioData = [
     { audioA: "./assets/sound1-a.mp3", audioB: "./assets/sound1-b.mp3", songName: "Unheard" , artist: "Brandon Mrgich with Blueshades"},
-    { audioA: "./assets/sound2-a.mp3", audioB: "./assets/sound2-b.mp3", songName: "Sample Audio", artist: "Sample" },
+    { audioA: "./assets/sound1-a.mp3", audioB: "./assets/sound1-b.mp3", songName: "Unheard" , artist: "Brandon Mrgich with Blueshades"},
+    { audioA: "./assets/sound1-a.mp3", audioB: "./assets/sound1-b.mp3", songName: "Unheard" , artist: "Brandon Mrgich with Blueshades"},
+    { audioA: "./assets/sound1-a.mp3", audioB: "./assets/sound1-b.mp3", songName: "Unheard" , artist: "Brandon Mrgich with Blueshades"},
+    { audioA: "./assets/sound1-a.mp3", audioB: "./assets/sound1-b.mp3", songName: "Unheard" , artist: "Brandon Mrgich with Blueshades"},
+    { audioA: "./assets/sound1-a.mp3", audioB: "./assets/sound1-b.mp3", songName: "Unheard" , artist: "Brandon Mrgich with Blueshades"},
+    { audioA: "./assets/sound1-a.mp3", audioB: "./assets/sound1-b.mp3", songName: "Unheard" , artist: "Brandon Mrgich with Blueshades"},
+    { audioA: "./assets/sound1-a.mp3", audioB: "./assets/sound1-b.mp3", songName: "Unheard" , artist: "Brandon Mrgich with Blueshades"},
+    { audioA: "./assets/sound1-a.mp3", audioB: "./assets/sound1-b.mp3", songName: "Unheard" , artist: "Brandon Mrgich with Blueshades"},
+    { audioA: "./assets/sound1-a.mp3", audioB: "./assets/sound1-b.mp3", songName: "Unheard" , artist: "Brandon Mrgich with Blueshades"},
     // Add more data as needed
 ];
 

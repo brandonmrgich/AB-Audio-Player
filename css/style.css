@@ -44,11 +44,47 @@ a {
   color: inherit;
 }
 
+header,
 body {
   background: #e6e6e6;
   display: grid;
   justify-items: center;
   grid-template-rows: 2fr 4fr;
+}
+
+#section {
+    width: 80%;
+}
+
+.navbar {
+  position: fixed; /* Fixed positioning */
+  top: 0; /* Align at the top of the viewport */
+  width: 100%; /* Take the full width of the viewport */
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  z-index: 1000; /* Ensure it's above other content */
+}
+
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar ul li {
+  display: inline;
+}
+
+.navbar ul li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+}
+
+.navbar ul li a:hover {
+  background-color: #555;
 }
 
 #intro {
@@ -92,40 +128,40 @@ body {
 }
 
 .players {
-  display: inline-grid;
-  justify-content: center;
-  align-items: center;
-  grid-template-columns: 1fr 1fr;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust column width as needed */
+  gap: 20px; /* Add some gap between the grid items */
+  justify-content: center; /* Center align grid items horizontally */
 }
 
 .player__wrapper {
-  border-radius: 50px;
+  border-radius: 20px;
   background: #e6e6e6;
-  box-shadow: 20px 20px 37px #cdcdcd, -20px -20px 37px #ffffff;
-  padding: 4vh 5.5vw 4.5vh 5.5vw;
-  max-width: 500px;
-  align-self: start;
-  margin: 20px 2vw;
+  box-shadow: 10px 10px 20px #cdcdcd, -10px -10px 20px #ffffff;
+  padding: 20px;
+  max-width: 300px; /* Adjust maximum width as needed */
+  width: 100%; /* Ensure full width of the grid cell */
+  text-align: center; /* Center align content */
 }
 
 .song__metadata__container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center; /* Center align content */
   justify-content: center;
-  text-align: left;
+  text-align: center;
 }
 
 .song__name {
-  font-size: 1.6em;
+  font-size: 1.2em; /* Adjust font size as needed */
   font-weight: bold;
 }
 
 .song__artist {
-  font-size: 1em;
+  font-size: 0.9em; /* Adjust font size as needed */
 }
 
-
+#playersContainer,
 .ab__controls {
   display: grid;
   align-content: center;
@@ -134,15 +170,17 @@ body {
   justify-content: center;
   justify-items: center;
   width: 100%;
+  margin-top: 10px;
+
 }
 
 button {
-  font-size: 1.3rem;
+  font-size: 1rem;
   text-transform: uppercase;
   border: none;
   color: #9b9b9b;
-  width: 5rem;
-  padding: 0.75rem;
+  padding: 0.5rem;
+  width: 100%;
   border-radius: 12px;
   background: #e6e6e6;
   box-shadow: 7px 7px 15px #cdcdcd, -7px -7px 15px #ffffff;
@@ -192,7 +230,7 @@ button:hover {
 
 .play__stop__controls {
   margin-top: 1rem;
-  display: grid;
+  display: flex;
   grid-template-columns: 1fr 1fr;
   justify-content: center;
   grid-gap: 1rem;
