@@ -2,7 +2,7 @@
   "name": "ab-audio-player",
   "version": "1.0.0",
   "description": "<div id=\"top\"></div>",
-  "main": "main.ts",  
+  "main": "main.ts",
   "scripts": {
     "build": "tsc",
     "start": "npm run build && live-server",
@@ -10,5 +10,9 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "live-server": "^1.2.2",
+    "typescript": "^5.3.3"
+  }
 }
